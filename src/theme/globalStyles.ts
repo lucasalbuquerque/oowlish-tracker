@@ -9,7 +9,7 @@ const GlobalStyles = withStyles(() => {
   return {
   "@global": {
     "*": {
-      margin: console.log("theme", theme),
+      margin: 0,
       padding: 0,
       boxSizing: "border-box",
     },
