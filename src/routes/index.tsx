@@ -10,7 +10,7 @@ const Loadable = (Component: any) => (props: any) => (
   </Suspense>
 );
 
-const TrackerList = Loadable(lazy(() => import("../pages/Dashboard")));
+const TrackerList = Loadable(lazy(() => import("../pages/Tracker/List")));
 
 export default function Router(): JSX.Element | null {
   return useRoutes([
