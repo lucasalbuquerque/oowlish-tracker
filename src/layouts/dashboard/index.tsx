@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { experimentalStyled as styled } from "@material-ui/core/styles";
+import DashboardNavbar from "./DashboardNavbar";
 
 const APP_BAR_MOBILE = 64;
 const APP_BAR_DESKTOP = 92;
@@ -28,6 +29,7 @@ export default function DashboardLayout(): JSX.Element {
   return (
     <RootStyle>
       <MainStyle>
+        <DashboardNavbar />
         <Outlet />
       </MainStyle>
     </RootStyle>
