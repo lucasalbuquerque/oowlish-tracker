@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
 import Page from '../../../components/Page';
 import Table from './Table';
 import Form from './Form';
 import { TrackerSchema } from '../../../settings/yup/schemas/trackerSchema';
 import api from '../../../services/api';
+import moment from 'moment';
+import { expected_working_hours } from '../../../constants/tracker';
+import { minutesToString, stringToMinutes } from '../../../constants/moment';
 
 const List: React.FC = () => {
 
   const [rows, setRows] = useState<TrackerSchema[]>([]);
+  const [amount, setAmount] = useState<string>();
+  const [workedHours, setWorkedHours] = useState<string>();
 
   const handleAddRow = (data: TrackerSchema) => {
     setRows([...rows, data]);
@@ -27,9 +32,35 @@ const List: React.FC = () => {
     getTrackerList();
   }, [])
 
+  useEffect(() => {
+    if(workedHours){
+      const currentAmount = minutesToString(
+        stringToMinutes(expected_working_hours.toString()) - stringToMinutes(workedHours)
+      );
+
+      setAmount(currentAmount);
+    }
+  }, [workedHours])
+
+  useEffect(() => {
+   if(rows.length){
+      const sum = rows.reduce((acc, time) => 
+        acc.add(moment.duration(time.duration)), moment.duration());
+
+      const dateAmount = [Math.floor(sum.asHours()), sum.minutes()].join(':');
+      setWorkedHours(dateAmount);
+   }
+  }, [rows]);
+
   return (
     <Page title="Tracker List">
        <Container>
+       <Typography variant="h6">
+          Worked hours: {workedHours}
+        </Typography>
+        <Typography variant="h6">
+          Hours to work: {amount}
+        </Typography>
         <Form handleAddRow={handleAddRow} />
         {rows.length && <Table data={rows} />}
        </Container>
