@@ -12,6 +12,7 @@ export interface TrackerSchema {
   description: string;
   startTime: string;
   endTime: string;
+  duration: string;
 }
 
 export default trackerSchema;
