@@ -16,7 +16,7 @@ export default function DashboardLayout(): JSX.Element {
     <RootStyle>
       <DashboardNavbar />
       <DashboardSidebar />
-        <Box component="main" sx={{ flexGrow: 1, paddingTop: 9 }}>
+        <Box component="main" sx={{ flexGrow: 1, paddingTop: 12, paddingLeft: 2 }}>
           <Outlet />
         </Box>
     </RootStyle>
