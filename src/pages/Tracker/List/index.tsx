@@ -15,8 +15,6 @@ const List: React.FC = () => {
       try {
         const response = await api.get("/tracker");
 
-        console.log("response", response.data)
-
         setRows(response.data);
       } catch(err){
         setRows([]);
