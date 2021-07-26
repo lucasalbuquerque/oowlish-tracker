@@ -4,6 +4,7 @@ import { AppBar } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
+import logo from "../../assets/logo.svg"
 
 const drawerWidth = 240;
 
@@ -34,7 +35,7 @@ const DashboardNavbar: React.FC = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+            <img src={logo} alt="Oowlish Tracker" width="120px" />
           </Typography>
         </Toolbar>
       </AppBar>
