@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from "react";
-import { useRoutes } from "react-router-dom";
+import { Navigate, useRoutes } from "react-router-dom";
 import DashboardLayout from "../layouts/dashboard";
 
 import { TRACKER_PATH } from "./paths";
@@ -14,6 +14,13 @@ const TrackerList = Loadable(lazy(() => import("../pages/Tracker/List")));
 
 export default function Router(): JSX.Element | null {
   return useRoutes([
+    {
+      path: "*",
+      element: <DashboardLayout />,
+      children: [
+        { path: "/", element: <Navigate to={TRACKER_PATH} replace /> },
+      ],
+    },
     {
       path: TRACKER_PATH,
       element: <DashboardLayout />,
