@@ -20,7 +20,7 @@ const Form: React.FC = () => {
     mode: "all",
   });
 
-   const onSubmit = useCallback((data: any) => {
+   const onSubmit = useCallback((data: TrackerSchema) => {
      console.log("dataa", data);
    }, []);
 
