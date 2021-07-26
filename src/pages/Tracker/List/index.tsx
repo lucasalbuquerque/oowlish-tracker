@@ -9,6 +9,10 @@ import api from '../../../services/api';
 const List: React.FC = () => {
 
   const [rows, setRows] = useState<TrackerSchema[]>([]);
+
+  const handleAddRow = (data: TrackerSchema) => {
+    setRows([...rows, data]);
+  };
   
   useEffect(() => {
     async function getTrackerList() {
@@ -26,7 +30,7 @@ const List: React.FC = () => {
   return (
     <Page title="Tracker List">
        <Container>
-        <Form />
+        <Form handleAddRow={handleAddRow} />
         {rows.length && <Table data={rows} />}
        </Container>
     </Page>

@@ -6,8 +6,12 @@ import { useForm } from "react-hook-form";
 import trackerSchema, { TrackerSchema } from '../../../../settings/yup/schemas/trackerSchema';
 import { yupResolver } from "@hookform/resolvers/yup";
 import getErrorMessage from '../../../../utils/getErrorMessage';
+import api from '../../../../services/api';
+import { FormProps } from './types';
 
-const Form: React.FC = () => {
+const Form: React.FC<FormProps> = ({
+  handleAddRow
+}) => {
   
   const [showForm, setShowForm] = useState<Boolean>(false);
 
@@ -20,9 +24,15 @@ const Form: React.FC = () => {
     mode: "all",
   });
 
-   const onSubmit = useCallback((data: TrackerSchema) => {
-     console.log("dataa", data);
-   }, []);
+   const onSubmit = useCallback(async (data: TrackerSchema) => {
+     try {
+       const response = await api.post("/tracker", data);
+       console.log("response", response.data)
+       handleAddRow(data);
+     } catch(err){
+       console.error(err);
+     }
+   }, [handleAddRow]);
 
   return (
     <>

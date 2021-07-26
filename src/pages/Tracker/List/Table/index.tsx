@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import MaterialTable from '../../../../components/Table';
 import { TrackerProps } from './types';
 
@@ -12,9 +12,7 @@ const Table: React.FC<TrackerProps> = ({
     { id: 'endTime', label: 'End Time' },
   ];
 
-  const [rows] = useState(data);
-
-  return  <MaterialTable columns={columns} rows={rows} />;
+  return  <MaterialTable columns={columns} rows={data} />;
 }
 
 export default Table;
