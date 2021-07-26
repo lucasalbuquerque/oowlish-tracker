@@ -50,7 +50,7 @@ const PRIMARY = {
   lighter: "#E3FAF5",
   light: "#A7D6CF",
   main: "#ffc21b",
-  dark: "#38736C",
+  dark: "#000000",
   darker: "#13352F",
 };
 const SECONDARY = {
