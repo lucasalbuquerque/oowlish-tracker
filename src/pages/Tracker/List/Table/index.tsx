@@ -8,8 +8,8 @@ const Table: React.FC<TrackerProps> = ({
 
   const columns = [
     { id: 'description', label: 'Description' },
-    { id: 'start_time', label: 'Start Time' },
-    { id: 'end_time', label: 'End Time' },
+    { id: 'startTime', label: 'Start Time' },
+    { id: 'endTime', label: 'End Time' },
   ];
 
   const [rows] = useState(data);
