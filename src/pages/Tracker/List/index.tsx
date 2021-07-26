@@ -14,6 +14,7 @@ const List: React.FC = () => {
   const [rows, setRows] = useState<TrackerSchema[]>([]);
   const [amount, setAmount] = useState<string>();
   const [workedHours, setWorkedHours] = useState<string>();
+  const [isAbove, setIsAbove] = useState<boolean>();
 
   const handleAddRow = (data: TrackerSchema) => {
     setRows([...rows, data]);
@@ -35,9 +36,9 @@ const List: React.FC = () => {
   useEffect(() => {
     if(workedHours){
       const currentAmount = minutesToString(
-        stringToMinutes(expected_working_hours.toString()) - stringToMinutes(workedHours)
+        stringToMinutes(workedHours) - stringToMinutes(expected_working_hours.toString())
       );
-
+      
       setAmount(currentAmount);
     }
   }, [workedHours])
@@ -52,6 +53,19 @@ const List: React.FC = () => {
    }
   }, [rows]);
 
+  useEffect(() => {
+    if(workedHours){
+      const expectedWorkingHours = stringToMinutes(expected_working_hours);
+      const currentWorkedHours = stringToMinutes(workedHours);
+
+      if(currentWorkedHours >= expectedWorkingHours){
+        return setIsAbove(true);
+      }
+
+      return setIsAbove(false);
+    }
+  }, [workedHours])
+
   return (
     <Page title="Tracker List">
        <Container>
@@ -59,7 +73,7 @@ const List: React.FC = () => {
           Worked hours: {workedHours}
         </Typography>
         <Typography variant="h6">
-          Hours to work: {amount}
+          {isAbove ? `You are ${amount} above the expected hours to work.` : `You are ${amount} below the expected hours to work.`} 
         </Typography>
         <Form handleAddRow={handleAddRow} />
         {rows.length && <Table data={rows} />}
