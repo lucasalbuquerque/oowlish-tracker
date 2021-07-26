@@ -8,6 +8,7 @@ const trackerSchema = yup.object().shape({
 });
 
 export interface TrackerSchema {
+  id: string;
   description: string;
   startTime: string;
   endTime: string;
