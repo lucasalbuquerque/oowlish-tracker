@@ -7,23 +7,25 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import sidebarConfig from './SidebarConfig';
 
 const drawerWidth = 240;
 
 const DashboardSidebar: React.FC = () => {
+  
   const drawer = (
     <div>
       <Toolbar />
       <Divider />
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+        {sidebarConfig.map(({ title, path, icon }) => (
+          <ListItem button key={title} component="a" href={path}>
+            <ListItemIcon sx={{
+              minWidth: 40
+            }}>
+              {icon}
             </ListItemIcon>
-            <ListItemText primary={text} />
+            <ListItemText primary={title} />
           </ListItem>
         ))}
       </List>
