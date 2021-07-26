@@ -1,0 +1,1 @@
+export const expected_working_hours = "160:00";
