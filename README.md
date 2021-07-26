@@ -24,5 +24,7 @@ Visit: http://localhost:3001/
 
 ## To improve
 
-[] - Add Notistack to show toast messages
-[] - Implement custom Loadable fallback component
+```
+- [ ] Add Notistack to show toast messages
+- [ ] Implement custom Loadable fallback component
+```
