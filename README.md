@@ -1,18 +1,4 @@
-## Running the API
-
-Install JSON Server 
-
-```
-npm install -g json-server
-```
-
-Start JSON Server
-
-```bash
-$ json-server --watch db.json --port 3004
-```
-
-## Running the Frontend
+## Running the application
 
 Run the follow command
 
@@ -20,9 +6,9 @@ Run the follow command
 $ docker-compose up -d
 ```
 
-Visit: http://localhost:3001/
+Visit: http://localhost:3000/
 
-## To improve
+## To improve :)
 
 ```
 - [ ] Add Notistack to show toast messages
