@@ -20,9 +20,7 @@ const DashboardSidebar: React.FC = () => {
       <List>
         {sidebarConfig.map(({ title, path, icon }) => (
           <ListItem button key={title} component="a" href={path}>
-            <ListItemIcon sx={{
-              minWidth: 40
-            }}>
+            <ListItemIcon sx={{ minWidth: 40 }}>
               {icon}
             </ListItemIcon>
             <ListItemText primary={title} />
