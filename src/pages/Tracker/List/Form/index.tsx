@@ -8,6 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import getErrorMessage from '../../../../utils/getErrorMessage';
 import api from '../../../../services/api';
 import { FormProps } from './types';
+import { parseTimeDuration } from '../../../../utils/parseTimeDuration';
 
 const Form: React.FC<FormProps> = ({
   handleAddRow
@@ -26,9 +27,12 @@ const Form: React.FC<FormProps> = ({
 
    const onSubmit = useCallback(async (data: TrackerSchema) => {
      try {
-       const response = await api.post("/tracker", data);
-       console.log("response", response.data)
-       handleAddRow(data);
+       const newData = {
+         ...data,
+         duration: parseTimeDuration(data.startTime, data.endTime)
+       };
+       await api.post("/tracker", newData);
+       handleAddRow(newData);
      } catch(err){
        console.error(err);
      }
