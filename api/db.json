@@ -1,0 +1,22 @@
+{
+  "tracker": [
+    {
+      "id": 1,
+      "description": "Time entry",
+      "startTime": "08:00 AM",
+      "endTime": "12:30 PM"
+    },
+    {
+      "id": 2,
+      "description": "Time entry",
+      "startTime": "09:00 AM",
+      "endTime": "08:30 PM"
+    },
+    {
+      "id": 3,
+      "description": "Daily",
+      "startTime": "10:00 AM",
+      "endTime": "10:30 AM"
+    }
+  ]
+}
