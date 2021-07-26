@@ -12,8 +12,8 @@ import { minutesToString, stringToMinutes } from '../../../constants/moment';
 const List: React.FC = () => {
 
   const [rows, setRows] = useState<TrackerSchema[]>([]);
-  const [amount, setAmount] = useState<string>();
-  const [workedHours, setWorkedHours] = useState<string>();
+  const [amount, setAmount] = useState<string>(expected_working_hours);
+  const [workedHours, setWorkedHours] = useState<string>("00:00");
   const [isAbove, setIsAbove] = useState<boolean>();
 
   const handleAddRow = (data: TrackerSchema) => {
@@ -76,7 +76,7 @@ const List: React.FC = () => {
           {isAbove ? `You are ${amount} above the expected hours to work.` : `You are ${amount} below the expected hours to work.`} 
         </Typography>
         <Form handleAddRow={handleAddRow} />
-        {rows.length && <Table data={rows} />}
+        {Boolean(rows.length) && <Table data={rows} />}
        </Container>
     </Page>
   );
