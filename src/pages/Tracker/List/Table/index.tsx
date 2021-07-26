@@ -10,6 +10,7 @@ const Table: React.FC<TrackerProps> = ({
     { id: 'description', label: 'Description' },
     { id: 'startTime', label: 'Start Time' },
     { id: 'endTime', label: 'End Time' },
+    { id: 'duration', label: 'Duration' }
   ];
 
   return  <MaterialTable columns={columns} rows={data} />;
