@@ -21,3 +21,8 @@ $ docker-compose up -d
 ```
 
 Visit: http://localhost:3001/
+
+## To improve
+
+[] - Add Notistack to show toast messages
+[] - Implement custom Loadable fallback component
