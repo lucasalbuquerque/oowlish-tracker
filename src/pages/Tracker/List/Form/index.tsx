@@ -3,7 +3,9 @@ import Stack from '@material-ui/core/Stack';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { useForm } from "react-hook-form";
-import { TrackerSchema } from '../../../../settings/yup/schemas/trackerSchema';
+import trackerSchema, { TrackerSchema } from '../../../../settings/yup/schemas/trackerSchema';
+import { yupResolver } from "@hookform/resolvers/yup";
+import getErrorMessage from '../../../../utils/getErrorMessage';
 
 const Form: React.FC = () => {
   
@@ -12,7 +14,9 @@ const Form: React.FC = () => {
   const {
     register,
     handleSubmit,
+    formState,
   } = useForm<TrackerSchema>({
+    resolver: yupResolver(trackerSchema),
     mode: "all",
   });
 
@@ -33,6 +37,13 @@ const Form: React.FC = () => {
             <TextField
                 id="description"
                 label="Description"
+                error={Boolean(formState.errors.description)}
+                helperText={
+                  getErrorMessage(
+                    "description",
+                    formState?.errors,
+                  )
+                }
                 {...register("description")}
             />    
             <TextField
@@ -40,6 +51,13 @@ const Form: React.FC = () => {
                 label="Time entry"
                 type="time"
                 defaultValue="08:00"
+                error={Boolean(formState.errors.startTime)}
+                helperText={
+                  getErrorMessage(
+                    "startTime",
+                    formState?.errors,
+                  )
+                }
                 {...register("startTime")}
             />
             <TextField
@@ -47,6 +65,13 @@ const Form: React.FC = () => {
                 label="End time"
                 type="time"
                 defaultValue="19:00"
+                error={Boolean(formState.errors.endTime)}
+                helperText={
+                  getErrorMessage(
+                    "endTime",
+                    formState?.errors,
+                  )
+                }
                 {...register("endTime")}
             />
             <Button type="submit" variant="contained">Salvar</Button>
