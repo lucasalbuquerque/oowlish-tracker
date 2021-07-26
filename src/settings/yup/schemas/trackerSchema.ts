@@ -1,4 +1,4 @@
-import yup from "yup";
+import * as yup from "yup";
 import { mixed_required_field } from "../../../constants/validations";
 
 const trackerSchema = yup.object().shape({
@@ -9,8 +9,8 @@ const trackerSchema = yup.object().shape({
 
 export interface TrackerSchema {
   description: string;
-  startTime: Date;
-  endTime: Date;
+  startTime: string;
+  endTime: string;
 }
 
 export default trackerSchema;
