@@ -1,0 +1,1 @@
+export const mixed_required_field = "Esse campo é obrigatório!";
