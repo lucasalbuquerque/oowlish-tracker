@@ -16,7 +16,7 @@ const MaterialTable: React.FC<MaterialTableProps> = ({
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 440 }}>
-        <Table stickyHeader aria-label="sticky table">
+        <Table stickyHeader aria-label="sticky table" data-testid="table">
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -30,7 +30,7 @@ const MaterialTable: React.FC<MaterialTableProps> = ({
               ))}
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody data-testid="table-rows">
             {rows.map((row, index) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={index}>
