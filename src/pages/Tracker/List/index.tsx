@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from '@material-ui/core';
 import Page from '../../../components/Page';
 import Table from './Table';
+import Form from './Form';
 
 const List: React.FC = () => {
 
@@ -21,6 +22,7 @@ const List: React.FC = () => {
   return (
     <Page title="Tracker List">
        <Container>
+        <Form />
         <Table data={rows} />
        </Container>
     </Page>
