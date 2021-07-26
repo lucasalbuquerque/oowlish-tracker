@@ -2,6 +2,7 @@ import React, { ReactNode } from "react";
 import { CssBaseline } from "@material-ui/core";
 import { ThemeProvider, ThemeOptions, createTheme } from "@material-ui/core/styles";
 import StyledEngineProvider from "@material-ui/core/StyledEngineProvider";
+import componentsOverride from "./overrides";
 
 import palette from "./palette";
 import typography from "./typography";
@@ -20,6 +21,7 @@ export default function ThemeConfig({ children }: ThemeConfigProps): JSX.Element
   };
 
   const theme = createTheme(themeOptions);
+  theme.components = componentsOverride(theme);
 
   return (
     <StyledEngineProvider>
