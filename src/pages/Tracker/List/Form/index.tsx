@@ -3,6 +3,7 @@ import Stack from '@material-ui/core/Stack';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { useForm } from "react-hook-form";
+import { TrackerSchema } from '../../../../settings/yup/schemas/trackerSchema';
 
 const Form: React.FC = () => {
   
@@ -11,7 +12,7 @@ const Form: React.FC = () => {
   const {
     register,
     handleSubmit,
-  } = useForm({
+  } = useForm<TrackerSchema>({
     mode: "all",
   });
 
