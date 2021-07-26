@@ -8,10 +8,11 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import sidebarConfig from './SidebarConfig';
-
-const drawerWidth = 240;
+import { useLocation } from 'react-router-dom'
 
 const DashboardSidebar: React.FC = () => {
+
+  const { pathname } = useLocation();
   
   const drawer = (
     <div>
@@ -19,7 +20,8 @@ const DashboardSidebar: React.FC = () => {
       <Divider />
       <List>
         {sidebarConfig.map(({ title, path, icon }) => (
-          <ListItem button key={title} component="a" href={path}>
+          <ListItem button key={title} component="a" href={path} 
+            selected={path === pathname}>
             <ListItemIcon sx={{ minWidth: 40 }}>
               {icon}
             </ListItemIcon>
@@ -40,7 +42,7 @@ const DashboardSidebar: React.FC = () => {
           variant="permanent"
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: 240 },
           }}
         >
           {drawer}
