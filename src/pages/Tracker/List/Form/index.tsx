@@ -41,16 +41,17 @@ const Form: React.FC<FormProps> = ({
   return (
     <>
       <Stack sx={{ paddingBottom: 2 }} direction="row" spacing={{ xs: 0.5, sm: 1.5 }}>
-        <Button variant="contained" onClick={() => setShowForm(true)}>Add Time Entry</Button>
+        <Button variant="contained" onClick={() => setShowForm(true)} data-testid="add_time">Add Time Entry</Button>
         <Button variant="outlined" onClick={() => setShowForm(true)}>Add Break</Button>
       </Stack>
       {showForm &&
       <Stack sx={{ paddingTop: 1, paddingBottom: 2 }}>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)} data-testid="form">
             <Stack direction={{ xs: "column", sm: "row" }} spacing={{ xs: 3, sm: 2 }}>
             <TextField
                 id="description"
                 label="Description"
+                type="text"
                 error={Boolean(formState.errors.description)}
                 helperText={
                   getErrorMessage(
@@ -59,6 +60,9 @@ const Form: React.FC<FormProps> = ({
                   )
                 }
                 {...register("description")}
+                inputProps={{
+                  "data-testid": "description",
+                }}
             />    
             <TextField
                 id="time"
@@ -73,6 +77,9 @@ const Form: React.FC<FormProps> = ({
                   )
                 }
                 {...register("startTime")}
+                inputProps={{
+                  "data-testid": "startTime",
+                }}
             />
             <TextField
                 id="time"
@@ -87,6 +94,9 @@ const Form: React.FC<FormProps> = ({
                   )
                 }
                 {...register("endTime")}
+                inputProps={{
+                  "data-testid": "endTime",
+                }}
             />
             <Button type="submit" variant="contained">Salvar</Button>
             </Stack>
