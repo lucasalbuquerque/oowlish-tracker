@@ -2,9 +2,8 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { experimentalStyled as styled } from "@material-ui/core/styles";
 import DashboardNavbar from "./DashboardNavbar";
-
-const APP_BAR_MOBILE = 64;
-const APP_BAR_DESKTOP = 92;
+import DashboardSidebar from "./DashboardSidebar";
+import Box from "@material-ui/core/Box";
 
 const RootStyle = styled("div")({
   display: "flex",
@@ -12,26 +11,14 @@ const RootStyle = styled("div")({
   overflow: "hidden",
 });
 
-const MainStyle = styled("div")(({ theme }) => ({
-  flexGrow: 1,
-  overflow: "auto",
-  minHeight: "100%",
-  paddingTop: APP_BAR_MOBILE + 24,
-  paddingBottom: theme.spacing(10),
-  [theme.breakpoints.up("lg")]: {
-    paddingTop: APP_BAR_DESKTOP + 24,
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(2),
-  },
-}));
-
 export default function DashboardLayout(): JSX.Element {
   return (
     <RootStyle>
-      <MainStyle>
-        <DashboardNavbar />
-        <Outlet />
-      </MainStyle>
+      <DashboardNavbar />
+      <DashboardSidebar />
+        <Box component="main" sx={{ flexGrow: 1, paddingTop: 9 }}>
+          <Outlet />
+        </Box>
     </RootStyle>
   );
 }
