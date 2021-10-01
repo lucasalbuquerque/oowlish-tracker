@@ -5,11 +5,7 @@ on:
 
 env:
   K8S_NAMESPACE: production
-  INPUT_MANIFEST: k8s/izacore-prd.yaml
-  OUTPUT_MANIFEST: k8s/izacore-deployment.yaml
-  INPUT_SVC_MANIFEST: k8s/izacore-svc-tpl.yaml
-  OUTPUT_SVC_MANIFEST: k8s/izacore-svc-output.yaml
-  AWS_REGION: us-west-2
+  INPUT_MANIFEST: k8s/deployment.yaml
   EKS_CLUSTER_NAME: oowlishtracker
 
 name: Deploy to Amazon ECS
