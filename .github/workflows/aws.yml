@@ -55,5 +55,4 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
       with:
         args: |
-          sed 's|IMAGE|670355910429.dkr.ecr.us-east-2.amazonaws.com\/oowlish:'$IMAGE_TAG'|g' $INPUT_MANIFEST
-          | kubectl apply -f -
+          sed 's|IMAGE|670355910429.dkr.ecr.us-east-2.amazonaws.com\/oowlish:'$IMAGE_TAG'|g' $INPUT_MANIFEST | kubectl apply -f -
