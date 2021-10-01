@@ -14,7 +14,7 @@ spec: #specificação do objeto
       spec: #CONTAINERS
         containers: 
         - name: oowlishtracker-container
-          image: albuquerquejs/oowlish
+          image: IMAGE
           ports: 
           - containerPort: 80
           livenessProbe:
