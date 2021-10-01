@@ -41,7 +41,7 @@ const Form: React.FC<FormProps> = ({
   return (
     <>
       <Stack sx={{ paddingBottom: 2 }} direction="row" spacing={{ xs: 0.5, sm: 1.5 }}>
-        <Button variant="contained" onClick={() => setShowForm(true)} data-testid="add_time">Add Time Entry</Button>
+        <Button variant="contained" onClick={() => setShowForm(true)} data-testid="add_time">Add New Time Entry</Button>
         <Button variant="outlined" onClick={() => setShowForm(true)}>Add Break</Button>
       </Stack>
       {showForm &&
