@@ -25,7 +25,9 @@
 
 on:
   release:
-    types: [created]
+    types: [published]
+    branches:
+      - master
 
 name: Deploy to Amazon ECS
 
