@@ -11,7 +11,7 @@ const Page = forwardRef<HTMLDivElement, PageProps>(({ children, title = "", ...o
   <Box ref={ref} {...other}>
     <Helmet>
       <title>
-        OowlishTracking -
+        Oowlish Web Tracker -
         {" "}
         {title}
       </title>
