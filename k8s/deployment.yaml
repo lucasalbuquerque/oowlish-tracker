@@ -1,0 +1,33 @@
+apiVersion: apps/v1 #versão da api
+kind: Deployment #criando um pod
+metadata:  #metadados do objeto
+  name: oowlishtracker
+spec: #specificação do objeto
+  replicas: 2
+  selector: 
+    matchLabels:
+      app: oowlishtracker
+  template: 
+      metadata:
+        labels:
+          app: oowlishtracker
+      spec: #CONTAINERS
+        containers: 
+        - name: oowlishtracker-container
+          image: albuquerquejs/oowlish
+          ports: 
+          - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /index.html
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 5
+            timeoutSeconds: 2
+          readinessProbe: 
+            httpGet:
+              path: /index.html
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 5
+            timeoutSeconds: 1

@@ -1,6 +1,8 @@
 # pull official base image
 FROM node:13.12.0-alpine as builder
 
+#!/bin/bash
+
 # set working directory
 WORKDIR /app
 
@@ -31,4 +33,6 @@ RUN rm -rf ./*
 # Copies static resources from builder stage
 COPY --from=builder /app/build .
 # Containers run nginx with global directives and daemon off
-ENTRYPOINT ["nginx", "-g", "daemon off;"]
+#ENTRYPOINT ["nginx", "-g", "daemon off;"]
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

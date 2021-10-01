@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: oowlishtracker-service
+spec:
+  selector:
+    app: oowlishtracker
+  ports:
+    - port: 80
+  type: LoadBalancer
